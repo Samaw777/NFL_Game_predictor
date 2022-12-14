@@ -1,0 +1,6 @@
+import pandas as pd
+df_22 = pd.read_csv('https://raw.githubusercontent.com/Marchosh/NFL-Prediction-2022/main/Data/2022_NFL_COMBINE.csv')
+
+df_19 = pd.read_csv('https://raw.githubusercontent.com/Marchosh/NFL-Prediction-2022/main/Data/2019_NFL_COMBINE.csv')
+df_20 = pd.read_csv('https://raw.githubusercontent.com/Marchosh/NFL-Prediction-2022/main/Data/2019_NFL_COMBINE.csv')
+df_21 = pd.read_csv('https://raw.githubusercontent.com/Marchosh/NFL-Prediction-2022/main/Data/2019_NFL_COMBINE.csv')
