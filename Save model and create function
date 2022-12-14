@@ -1,0 +1,31 @@
+import joblib
+
+
+
+# save the model to disk
+
+#filename='finalized_model.sav'
+
+joblib.dump(model,'NFLMODEL.joblib')
+
+model.save('NFLmodel.h5') 
+
+
+#fub=nction 
+def predict_NFL (home_team,away_team, winner):
+
+  team1 = home_team
+  team2 = away_team
+
+  #assign home to data
+  home_data = model
+  #assign away to data
+  
+  home_score = model.predict(home_team)
+  away_score = model.predict(away_team)
+  
+  if home_score > away_score:
+    winner = home_team
+  else:
+    winner = away_team
+  return winner
