@@ -1,0 +1,25 @@
+#hyperparameter tunning
+from sklearn.model_selection import GridSearchCV
+from tensorflow.keras.wrappers.scikit_learn import KerasRegressor
+from sklearn.datasets import make_regression
+
+layers = [[100], [100,80]]
+param_grid = {
+    'layers': layers,
+    'initializer': ['normal', 'uniform'],
+    'activation': ['relu'],
+    'optimizer': ['rmsprop'],
+    'loss': ['mse'],
+    'batch_size': [32, 64],
+    'epochs': [100],
+}
+
+grid_search = GridSearchCV(
+    estimator=KerasRegressor(build_model, verbose=0),
+    param_grid=param_grid,
+    scoring= ['neg_root_mean_squared_error', 'neg_mean_absolute_percentage_error'],
+    refit='neg_root_mean_squared_error',
+    cv=5,
+    verbose = 4
+
+)
