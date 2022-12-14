@@ -1,0 +1,35 @@
+
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Activation,Dropout
+from tensorflow.keras.losses import MeanSquaredLogarithmicError
+from tensorflow.keras.optimizers import Adam
+
+def build_model(layers, activation, initializer, loss, optimizer):
+  # define the keras model
+
+  for i, nodes in enumerate(layers):
+    model = Sequential()
+    if i ==0:
+      #input layer
+      model.add(Dense(nodes,input_dim=79))
+      model.add(Activation(activation))
+
+    else:
+      #hidden layers
+      model.add(Dense(nodes))
+      model.add(Activation(activation))
+      model.add(Dropout(0.2))
+
+
+  #output layer
+  model.add(Dense(1, kernel_initializer=initializer, activation='linear'))
+  
+  # loss function
+  model.compile(
+    loss=loss, 
+    optimizer=optimizer, 
+  )
+  return model
