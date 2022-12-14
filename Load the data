@@ -1,5 +1,5 @@
 import pandas as pd
-df = pd.read_csv('C:\Users\sami\Desktop\Data science projects')
+df = pd.read_csv('https://github.com/Samaw777/NFL_Game_predictor/blob/main/NFL_data.xlsx')
 
 
 df.dropna(inplace=True)
