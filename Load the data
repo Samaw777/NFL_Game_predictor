@@ -1,6 +1,43 @@
 import pandas as pd
-df_22 = pd.read_csv('https://raw.githubusercontent.com/Marchosh/NFL-Prediction-2022/main/Data/2022_NFL_COMBINE.csv')
+df = pd.read_csv('C:\Users\sami\Desktop\Data science projects')
 
-df_19 = pd.read_csv('https://raw.githubusercontent.com/Marchosh/NFL-Prediction-2022/main/Data/2019_NFL_COMBINE.csv')
-df_20 = pd.read_csv('https://raw.githubusercontent.com/Marchosh/NFL-Prediction-2022/main/Data/2019_NFL_COMBINE.csv')
-df_21 = pd.read_csv('https://raw.githubusercontent.com/Marchosh/NFL-Prediction-2022/main/Data/2019_NFL_COMBINE.csv')
+
+df.dropna(inplace=True)
+#drop unecessary column
+df.drop(['Week', 'Day','Unnamed: 0','Date',	'Unnamed: 5', 'Tm',	'Opp.1'], axis =1, inplace=True)
+df
+
+df.reset_index(inplace=True, drop=True)
+df
+
+#All team name
+away = {
+    'Opp': ['Tampa Bay Buccaneers', 'Cincinnati Bengals',
+       'Pittsburgh Steelers', 'Los Angeles Rams', 'Washington Redskins',
+       'Carolina Panthers', 'Seattle Seahawks', 'Arizona Cardinals',
+       'Baltimore Ravens', 'New Orleans Saints', 'Atlanta Falcons',
+       'Minnesota Vikings', 'Kansas City Chiefs', 'Oakland Raiders',
+       'Los Angeles Chargers', 'New York Giants', 'Detroit Lions',
+       'San Francisco 49ers', 'Buffalo Bills', 'Cleveland Browns',
+       'Miami Dolphins', 'Tennessee Titans', 'Houston Texans',
+       'New York Jets', 'Jacksonville Jaguars', 'Indianapolis Colts',
+       'New England Patriots', 'Philadelphia Eagles', 'Denver Broncos',
+       'Chicago Bears', 'Dallas Cowboys', 'Green Bay Packers',
+       'Washington Football Team', 'Las Vegas Raiders',
+       'Washington Commanders']}
+home = {
+       'Home_team': ['San Francisco 49ers', 'Chicago Bears', 'Cincinnati Bengals',
+       'Denver Broncos', 'Cleveland Browns', 'Tampa Bay Buccaneers',
+       'Buffalo Bills', 'Arizona Cardinals', 'Los Angeles Chargers',
+       'Kansas City Chiefs', 'Indianapolis Colts', 'Dallas Cowboys',
+       'Miami Dolphins', 'Philadelphia Eagles', 'Atlanta Falcons',
+       'New York Giants', 'Jacksonville Jaguars', 'New York Jets',
+       'Detroit Lions', 'Green Bay Packers', 'Carolina Panthers',
+       'New England Patriots', 'Oakland Raiders', 'Los Angeles Rams',
+       'Baltimore Ravens', 'New Orleans Saints', 'Seattle Seahawks',
+       'Pittsburgh Steelers', 'Houston Texans', 'Tennessee Titans',
+       'Minnesota Vikings']
+}
+away_t = pd.DataFrame(data=away)
+home_t = pd.DataFrame(data=home)
+df_teamname = pd.concat([away_t, home_t], axis=1)
