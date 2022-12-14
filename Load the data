@@ -41,3 +41,19 @@ home = {
 away_t = pd.DataFrame(data=away)
 home_t = pd.DataFrame(data=home)
 df_teamname = pd.concat([away_t, home_t], axis=1)
+
+#Scaling
+
+#Robust Scaller
+from sklearn.preprocessing import RobustScaler
+
+scale_col = ['1stD', 'TotYd', 'PassY', 'RushY', 'TO', '1stD.1', 'TotYd.1',
+       'PassY.1', 'RushY.1', 'TO.1', 'Offense', 'Defense', 'Sp. Tms']
+scaler = RobustScaler()
+df2 = scaler.fit_transform(df[scale_col])
+
+#create dataframe and add the column that was removed from robust scaler
+df2 = pd.DataFrame(df2)
+df2['Year'] = df['Year']
+df2['Home_team'] = df['Home_team']
+df2['Opp'] = df['Opp']
